@@ -5163,6 +5163,10 @@ LIGHT_SOURCES_SDS = CaseInsensitiveMapping(LIGHT_SOURCES_RIT_SDS)
 LIGHT_SOURCES_SDS.__doc__ = """
 Aggregated light sources spectral distributions.
 
+References
+----------
+:cite:`Houston2015a`, :cite:`Ohno2008a`, :cite:`Pointer1980a`
+
 LIGHT_SOURCES_SDS : CaseInsensitiveMapping
 """
 
