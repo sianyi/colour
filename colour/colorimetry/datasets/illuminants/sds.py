@@ -26,6 +26,13 @@ The following *CIE* illuminants are available:
     LED-RGB1, LED-V1, LED-V2)
 -   Recommended indoor illuminants ID65 and ID50.
 
+The following *ISO* illuminants are available:
+
+-   'ISO 7589 Sensitometric Daylight'
+-   'ISO 7589 Sensitometric Studio Tungsten'
+-   'ISO 7589 Sensitometric Photoflood'
+-   'ISO 7589 Sensitometric Printer'
+
 See Also
 --------
 `Illuminants Jupyter Notebook
@@ -34,10 +41,9 @@ blob/master/notebooks/colorimetry/illuminants.ipynb>`_
 
 Notes
 -----
--   The spectral distributions are provided at 5 nm interval.
--   *CIE Illuminant D Series* *D60* spectral
-    distribution is calculated using :func:`colour.sd_CIE_illuminant_D_series`
-    definition.
+-   The spectral distributions are typically provided at 5nm or 10nm interval.
+-   *CIE Illuminant D Series* *D60* spectral distribution is calculated using
+    :func:`colour.sd_CIE_illuminant_D_series` definition.
 
 References
 ----------
@@ -48,6 +54,9 @@ References
     https://law.resource.org/pub/us/cfr/ibr/003/cie.15.2004.tables.xls
 -   :cite:`CIEcf` : CIE. (n.d.). CIE Spectral Data. Retrieved from
     http://files.cie.co.at/204.xls
+-   :cite:`ISO2002` : ISO. (2002). INTERNATIONAL STANDARD 7589-2002 -
+    Photography - Illuminants for sensitometry - Specifications for daylight,
+    incandescent tungsten and printer.
 """
 
 from __future__ import division, unicode_literals
@@ -64,7 +73,8 @@ __email__ = 'colour-developers@colour-science.org'
 __status__ = 'Production'
 
 __all__ = [
-    'ILLUMINANTS_CIE_SDS_DATA', 'ILLUMINANTS_CIE_SDS', 'ILLUMINANTS_SDS'
+    'ILLUMINANTS_CIE_SDS_DATA', 'ILLUMINANTS_CIE_SDS',
+    'ILLUMINANTS_ISO_SDS_DATA', 'ILLUMINANTS_ISO_SDS', 'ILLUMINANTS_SDS'
 ]
 
 ILLUMINANTS_CIE_SDS_DATA = {
@@ -4710,16 +4720,187 @@ References
 ILLUMINANTS_CIE_SDS : CaseInsensitiveMapping
 """
 
+ILLUMINANTS_ISO_SDS_DATA = {
+    'ISO 7589 Sensitometric Daylight': {
+        350: 0.00,
+        360: 2.17,
+        370: 7.82,
+        380: 13.86,
+        390: 22.80,
+        400: 45.14,
+        410: 57.27,
+        420: 63.36,
+        430: 61.88,
+        440: 80.84,
+        450: 93.10,
+        460: 97.00,
+        470: 98.00,
+        480: 100.94,
+        490: 97.02,
+        500: 99.99,
+        510: 101.00,
+        520: 100.00,
+        530: 104.00,
+        540: 102.00,
+        550: 103.00,
+        560: 100.00,
+        570: 97.00,
+        580: 98.00,
+        590: 90.09,
+        600: 93.06,
+        610: 94.05,
+        620: 92.12,
+        630: 88.20,
+        640: 89.24,
+        650: 86.33,
+        660: 86.40,
+        670: 89.30,
+        680: 84.60,
+        690: 75.20,
+    },
+    'ISO 7589 Sensitometric Studio Tungsten': {
+        350: 0.00,
+        360: 0.21,
+        370: 1.15,
+        380: 3.36,
+        390: 7.20,
+        400: 11.84,
+        410: 16.60,
+        420: 21.12,
+        430: 26.39,
+        440: 31.96,
+        450: 36.10,
+        460: 41.71,
+        470: 47.04,
+        480: 51.94,
+        490: 58.41,
+        500: 63.36,
+        510: 70.00,
+        520: 76.00,
+        530: 81.00,
+        540: 88.00,
+        550: 94.00,
+        560: 100.00,
+        570: 105.00,
+        580: 111.00,
+        590: 114.84,
+        600: 120.78,
+        610: 125.73,
+        620: 129.36,
+        630: 135.24,
+        640: 138.71,
+        650: 143.56,
+        660: 146.88,
+        670: 149.15,
+        680: 152.28,
+        690: 156.98,
+    },
+    'ISO 7589 Sensitometric Photoflood': {
+        350: 0.00,
+        360: 0.98,
+        370: 3.68,
+        380: 7.98,
+        390: 13.80,
+        400: 19.24,
+        410: 24.90,
+        420: 29.92,
+        430: 34.58,
+        440: 39.48,
+        450: 44.65,
+        460: 50.44,
+        470: 54.88,
+        480: 59.78,
+        490: 65.34,
+        500: 70.29,
+        510: 76.00,
+        520: 81.00,
+        530: 86.00,
+        540: 91.00,
+        550: 95.00,
+        560: 100.00,
+        570: 104.00,
+        580: 109.00,
+        590: 111.87,
+        600: 115.83,
+        610: 119.79,
+        620: 122.50,
+        630: 126.42,
+        640: 128.04,
+        650: 130.95,
+        660: 132.48,
+        670: 133.95,
+        680: 135.36,
+        690: 137.24,
+    },
+    'ISO 7589 Sensitometric Printer': {
+        350: 0.00,
+        360: 0.00,
+        370: 0.00,
+        380: 0.34,
+        390: 3.10,
+        400: 8.17,
+        410: 12.95,
+        420: 17.53,
+        430: 22.70,
+        440: 28.12,
+        450: 32.49,
+        460: 37.96,
+        470: 43.75,
+        480: 48.82,
+        490: 55.49,
+        500: 60.83,
+        510: 67.90,
+        520: 74.48,
+        530: 80.19,
+        540: 87.12,
+        550: 94.00,
+        560: 100.00,
+    }
+}
+
+ILLUMINANTS_ISO_SDS = CaseInsensitiveMapping({
+    'ISO 7589 Sensitometric Daylight':
+        SpectralDistribution(
+            ILLUMINANTS_ISO_SDS_DATA['ISO 7589 Sensitometric Daylight'],
+            name='ISO 7589 Sensitometric Daylight'),
+    'ISO 7589 Sensitometric Studio Tungsten':
+        SpectralDistribution(
+            ILLUMINANTS_ISO_SDS_DATA['ISO 7589 Sensitometric Studio Tungsten'],
+            name='ISO 7589 Sensitometric Studio Tungsten'),
+    'ISO 7589 Sensitometric Photoflood':
+        SpectralDistribution(
+            ILLUMINANTS_ISO_SDS_DATA['ISO 7589 Sensitometric Photoflood'],
+            name='ISO 7589 Sensitometric Photoflood'),
+    'ISO 7589 Sensitometric Printer':
+        SpectralDistribution(
+            ILLUMINANTS_ISO_SDS_DATA['ISO 7589 Sensitometric Printer'],
+            name='ISO 7589 Sensitometric Printer'),
+})
+ILLUMINANTS_ISO_SDS.__doc__ = """
+*ISO* illuminants spectral distributions.
+
+Notes
+-----
+
+References
+----------
+:cite:`ISO2002`
+
+ILLUMINANTS_CIE_SDS : CaseInsensitiveMapping
+"""
+
 ILLUMINANTS_SDS = CaseInsensitiveMapping(ILLUMINANTS_CIE_SDS)
 ILLUMINANTS_SDS.__doc__ = """
 Aggregated illuminants spectral distributions.
 
 References
 ----------
-:cite:`Carter2018`, :cite:`CIEce`, :cite:`CIEcf`
+:cite:`Carter2018`, :cite:`CIEce`, :cite:`CIEcf`, :cite:`ISO2002`
 
 ILLUMINANTS_SDS : CaseInsensitiveMapping
 """
+
+ILLUMINANTS_SDS.update(ILLUMINANTS_ISO_SDS)
 
 # *CIE 15:2004* recommends using linear interpolation for
 # *CIE Standard Illuminant D Series*, for consistency all the illuminants are

@@ -22,6 +22,13 @@ The following *CIE* illuminants are available:
     LED-RGB1, LED-V1, LED-V2)
 -   Recommended indoor illuminants ID65 and ID50.
 
+The following *ISO* illuminants are available:
+
+-   'ISO 7589 Sensitometric Daylight'
+-   'ISO 7589 Sensitometric Studio Tungsten'
+-   'ISO 7589 Sensitometric Photoflood'
+-   'ISO 7589 Sensitometric Printer'
+
 The following other illuminants are available for the
 *CIE 1931 2 Degree Standard Observer* only:
 
@@ -53,6 +60,9 @@ DCI_DCinema_System_Spec_v1_1.pdf
 -   :cite:`InternationalColorConsortium2010` : International Color Consortium.
     (2010). Specification ICC.1:2010 (Profile version 4.3.0.0) (pp. 1-130).
     http://www.color.org/specification/ICC1v43_2010-12.pdf
+-   :cite:`ISO2002` : ISO. (2002). INTERNATIONAL STANDARD 7589-2002 -
+    Photography - Illuminants for sensitometry - Specifications for daylight,
+    incandescent tungsten and printer.
 -   :cite:`TheAcademyofMotionPictureArtsandSciences2014q` : The Academy of
     Motion Picture Arts and Sciences, Science and Technology Council, & Academy
     Color Encoding System (ACES) Project Subcommittee. (2014). Technical
@@ -82,7 +92,9 @@ __all__ = [
     'ILLUMINANTS_ACES_CIE_1931_2_DEGREE_STANDARD_OBSERVER',
     'ILLUMINANTS_DCI_CIE_1931_2_DEGREE_STANDARD_OBSERVER',
     'ILLUMINANTS_ICC_CIE_1931_2_DEGREE_STANDARD_OBSERVER',
-    'ILLUMINANTS_CIE_CIE_1964_10_DEGREE_STANDARD_OBSERVER', 'ILLUMINANTS'
+    'ILLUMINANTS_ISO_CIE_1931_2_DEGREE_STANDARD_OBSERVER',
+    'ILLUMINANTS_CIE_CIE_1964_10_DEGREE_STANDARD_OBSERVER',
+    'ILLUMINANTS_ISO_CIE_1964_10_DEGREE_STANDARD_OBSERVER', 'ILLUMINANTS'
 ]
 
 ILLUMINANTS_CIE_CIE_1931_2_DEGREE_STANDARD_OBSERVER = CaseInsensitiveMapping({
@@ -192,6 +204,27 @@ References
 ILLUMINANTS_ICC_CIE_1931_2_DEGREE_STANDARD_OBSERVER : CaseInsensitiveMapping
 """
 
+ILLUMINANTS_ISO_CIE_1931_2_DEGREE_STANDARD_OBSERVER = CaseInsensitiveMapping({
+    'ISO 7589 Sensitometric Daylight':
+        np.array([0.333818313227557, 0.353436231513603]),
+    'ISO 7589 Sensitometric Studio Tungsten':
+        np.array([0.431418223648390, 0.407471441950342]),
+    'ISO 7589 Sensitometric Photoflood':
+        np.array([0.412024776908998, 0.398177410548532]),
+    'ISO 7589 Sensitometric Printer':
+        np.array([0.412087967973680, 0.421104984758526]),
+})
+"""
+*ISO* illuminant chromaticity coordinates for
+*CIE 1931 2 Degree Standard Observer*.
+
+References
+----------
+:cite:`ISO2002`
+
+ILLUMINANTS_ISO_CIE_1931_2_DEGREE_STANDARD_OBSERVER : CaseInsensitiveMapping
+"""
+
 ILLUMINANTS_CIE_CIE_1964_10_DEGREE_STANDARD_OBSERVER = CaseInsensitiveMapping({
     'A': np.array([0.45117, 0.40594]),
     'B': np.array([0.34980, 0.35270]),
@@ -257,6 +290,27 @@ References
 ILLUMINANTS_CIE_CIE_1964_10_DEGREE_STANDARD_OBSERVER : CaseInsensitiveMapping
 """
 
+ILLUMINANTS_ISO_CIE_1964_10_DEGREE_STANDARD_OBSERVER = CaseInsensitiveMapping({
+    'ISO 7589 Sensitometric Daylight':
+        np.array([0.336125906007630, 0.354997062476417]),
+    'ISO 7589 Sensitometric Studio Tungsten':
+        np.array([0.435607674215215, 0.406129244796761]),
+    'ISO 7589 Sensitometric Photoflood':
+        np.array([0.415625819190627, 0.397002292994179]),
+    'ISO 7589 Sensitometric Printer':
+        np.array([0.418841052206998, 0.418695130974955]),
+})
+"""
+*ISO* illuminant chromaticity coordinates for
+*CIE 1964 10 Degree Standard Observer*.
+
+References
+----------
+:cite:`ISO2002`
+
+ILLUMINANTS_ISO_CIE_1964_10_DEGREE_STANDARD_OBSERVER : CaseInsensitiveMapping
+"""
+
 ILLUMINANTS = CaseInsensitiveMapping({
     'CIE 1931 2 Degree Standard Observer':
         CaseInsensitiveMapping(
@@ -305,7 +359,7 @@ computed as follows::
 
 References
 ----------
-:cite:`CIETC1-482004h`, :cite:`DigitalCinemaInitiatives2007b`,
+:cite:`CIETC1-482004h`, :cite:`DigitalCinemaInitiatives2007b`, :cite:`ISO2002`,
 :cite:`InternationalColorConsortium2010`,
 :cite:`TheAcademyofMotionPictureArtsandSciences2014q`, :cite:`Wikipedia2006a`
 
@@ -331,3 +385,9 @@ ILLUMINANTS['CIE 1931 2 Degree Standard Observer'].update(
 
 ILLUMINANTS['CIE 1931 2 Degree Standard Observer'].update(
     ILLUMINANTS_ICC_CIE_1931_2_DEGREE_STANDARD_OBSERVER)
+
+ILLUMINANTS['CIE 1931 2 Degree Standard Observer'].update(
+    ILLUMINANTS_ISO_CIE_1931_2_DEGREE_STANDARD_OBSERVER)
+
+ILLUMINANTS['CIE 1964 10 Degree Standard Observer'].update(
+    ILLUMINANTS_ISO_CIE_1964_10_DEGREE_STANDARD_OBSERVER)
