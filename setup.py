@@ -148,7 +148,7 @@ setup(
     name='colour-science',
     version='0.3.15',
     description='Colour Science for Python',
-    long_description=open('README.rst').read(),
+    long_description=open('README.rst', encoding="utf-8").read(),
     author='Colour Developers',
     author_email='colour-developers@colour-science.org',
     maintainer='Colour Developers',
