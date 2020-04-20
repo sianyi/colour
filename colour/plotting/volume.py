@@ -646,6 +646,7 @@ def plot_RGB_scatter(RGB,
             'edge_colours': [(0.25, 0.25, 0.25)] * count_c,
             'face_alpha': [0.0] * count_c,
             'edge_alpha': [0.1] * count_c,
+            'reference_points': None
         })
     settings.update(kwargs)
     settings['standalone'] = False
@@ -674,9 +675,31 @@ def plot_RGB_scatter(RGB,
         points[..., 1],
         points[..., 2],
         color=np.reshape(RGB, (-1, 3)),
-        s=points_size)
+        s=points_size,
+        edgecolor = 'black')
+
+    ref_RGB = settings['reference_points']
+
+    if ref_RGB is not None:
+        #plot reference point
+        ref_XYZ = RGB_to_XYZ(ref_RGB, colourspace.whitepoint, colourspace.whitepoint,
+                         colourspace.RGB_to_XYZ_matrix)
+
+        ref_points = common_colourspace_model_axis_reorder(
+            XYZ_to_colourspace_model(ref_XYZ, colourspace.whitepoint,
+                                     reference_colourspace), reference_colourspace)
+
+        axes.scatter(
+            ref_points[..., 0],
+            ref_points[..., 1],
+            ref_points[..., 2],
+            color= '#44BBBBBB',
+            s = points_size,
+            marker = 's',
+            edgecolor = 'black')
 
     settings.update({'axes': axes, 'standalone': True})
     settings.update(kwargs)
+    print(settings)
 
     return render(**settings)
